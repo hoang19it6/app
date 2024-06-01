@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Connection URL
-const url = 'mongodb+srv://cluster0.yqxsze7.mongodb.net/%22%20--apiVersion%201%20--username%20hoang';
+const url = 'mongodb+srv://hoang:240499@cluster0.yqxsze7.mongodb.net/?retryWrites=true&w=majority';
 
 // Connect to MongoDB
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -12,4 +12,6 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('MongoDB connection failed', err);
   });
 
-module.exports =  mongoose ;
+module.exports = {
+  mongoose
+};
