@@ -1,26 +1,21 @@
+// userModel.js
+const mongoose = require('mongoose');
 
-const mongoose = require('./connet-mongo');
-
+// Define the user schema
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
-}, {
-  timestamps: true
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    // Add other fields as needed
 });
 
-const User = mongoose.model('User', userSchema);
+// Create the userModel based on the schema
+const userModel = mongoose.model('User', userSchema);
 
-
-
-module.exports = User;
+module.exports = userModel;
