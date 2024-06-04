@@ -1,10 +1,19 @@
 const Movie = require('../models/movieModel');
 
 // Xử lý yêu cầu để lấy tất cả các bộ phim
+// exports.getAllMovies = async (req, res) => {
+//   try {
+//     const movies = await Movie.find();
+//     res.json(movies);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
+
 exports.getAllMovies = async (req, res) => {
   try {
     const movies = await Movie.find();
-    res.json(movies);
+    res.render('index', { movies: movies });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

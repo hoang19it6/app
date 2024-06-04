@@ -7,7 +7,6 @@ const productRoute = require('./routes/productRoute');
 const movieRoutes = require('./routes/movieRoute');
 
 const app = express();
-const port = 3000;
 
 // Middleware
 app.use(bodyParser.json());
@@ -32,37 +31,8 @@ app.use('/api', userRoutes);
 app.use('/product', productRoute);
 app.use('/movie', movieRoutes);
 
+app.get('/',movieRoutes);
 // Home route
-app.get('/', (req, res) => {
-    res.render('blog-details');
-});
-
-// Route to handle adding new movie data
-app.post('/add-movie', async (req, res) => {
-  try {
-    // Extract movie data from request body
-    const { title, image, category, episodes, comments, views, description } = req.body;
-    // Create new movie instance
-    const newMovie = new Movie({
-      title,
-      image,
-      category,
-      episodes,
-      comments,
-      views,
-      description
-    });
-    // Save movie to database
-    const savedMovie = await newMovie.save();
-    // Respond with the saved movie
-    res.status(201).json(savedMovie);
-  } catch (error) {
-    // Handle error
-    res.status(400).json({ message: error.message });
-  }
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(3000, () => {
+  console.log(`Server is running at http://localhost:${3000}`);
 });
